@@ -1,0 +1,6 @@
+# Frame-Bounds
+
+Theory:
+ * Frame is position relative to parent view (super.view)
+ * Bounds is position relative to its own coordinate system
+ * Frame is smalest box around view (frames width/ height changes when object is rotated, bounds don't change)
