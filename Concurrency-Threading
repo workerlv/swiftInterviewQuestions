@@ -1,0 +1,23 @@
+Concurrency-Threading
+
+Theory:
+
+  * Concurrency is doing multiple tasks at the same time (multithreading)
+  * Multithreading is an operating system feature managed by the scheduler
+  * All tasks are executed in threads (main thread and bacground threads)
+  * Main thread must be as "clean" as possible because UIView work on main thread (if a lot of hard tasks gona be on main thread UIView gona "freeze" and cleint can assume that app is broken)
+  * For creating and managing threads apple has created Grand Central Dispatch and NSOperation Queues
+  * All tasks are ordered in queues - serial queues and concurrent queues
+  * Sirial queues works in order (second task will start only when first task is finished)
+  * Concurrent queues starts in order but does not wait when previous finishes, so they can end in different order
+  * By default every app gets one serial queue and four concurrent queues
+
+Example:
+
+  * When downloading somthing from outer JSON file, tasks will be done in background thread and if you need for example put this data in main thread, then table view must be reloaded in main thread like:
+
+DispatchQueue.main.async { self.tableView.reloadData() }
+
+  * If something is necessary to execulte in background than this is option:
+
+DispatchQueue.global(qos: .background).async { //Code to execute in bacground queue }
