@@ -1,0 +1,27 @@
+Singleton
+
+Theory:
+	* The singleton pattern guarantees that only one instance of a class is instantiated
+	* Singletons are objects that should only ever be created once (one instance in memory), then shared everywhere they need to be used
+	* Singleton can be only class objects, because class is refernece type and always will change original objects (with struct it's possible to make copy, so in that way it's no more singleton)
+	* Apples singletons - UserDefaults, FileManager, UIApplication ….
+
+Example:
+
+class Settings {
+
+  static let shared = Settings()
+  var level = "pro"
+  
+  private init() {}
+}
+
+
+let setting1 = Settings.shared
+let setting2 = Settings.shared
+
+setting1 === setting2 //(pointing to same object in memory)
+
+setting1.level = "noob"
+
+Settings.shared.level // with class object prints "noob" but if it would be made as Struct that it prints "pro" because Struct is making copy and does not affect original as class reference does
