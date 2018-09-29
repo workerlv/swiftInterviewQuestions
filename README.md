@@ -3,3 +3,4 @@
 Answerts to:
   * Frame_Bounds
   * Concurrency-Threading
+  * Singletons
